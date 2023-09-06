@@ -1,29 +1,29 @@
 # Grafana dashboards
 ### Description  
 This repository contains set of Grafana dashboards.   
-#### 1. AD Monitoring
-#### 2. Apache Overview  
-#### 3. D-Link Network Devices  
-#### 4. GrayLog-Nodes  
-#### 5. HTTP Response  
-#### 6. Linux servers agent  
-#### 7. Microsoft SQL Overview  
-#### 8. Mikrotik Network Devices
-#### 9. MySQL Overview  
-#### 10. Network Overview  
-#### 11. Nginx Overview  
-#### 12. Oracle DB Overview
-#### 13. PostgreSQL Overview  
-#### 14. Printers Detail  
-#### 15. Printers Overview  
-#### 16. RabbitMQ Overview  
-#### 17. Radius-Server Log Monitoring Full    
-#### 18. SIP Monitoring  
-#### 19. Squid Log Monitoring  
-#### 20. Synology Monitoring  
-#### 21. UPS Monitoring  
-#### 22. VMware ESXI Monitoring  
-#### 23. VPN Connections Overview    
-#### 24. VPN Connections Users  
-#### 25. Windows servers agent  
-#### 26. Zabbix DB Replication
+#### 1. [AD Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/AD%20Monitoring-1693995940464.json)
+#### 2. [Apache Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Apache%20Overview-1693995954365.json)  
+#### 3. [D-Link Network Devices](https://github.com/lion896/Grafana/blob/main/dashboards/D-Link%20Network%20Devices-1693995960983.json) 
+#### 4. [GrayLog-Nodes](https://github.com/lion896/Grafana/blob/main/dashboards/GrayLog-Nodes-1693995967387.json)  
+#### 5. [HTTP Response](https://github.com/lion896/Grafana/blob/main/dashboards/HTTP%20Response-1693995982339.json)  
+#### 6. [Linux servers agent](https://github.com/lion896/Grafana/blob/main/dashboards/Linux%20servers%20agent-1693995989518.json)  
+#### 7. [Microsoft SQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Microsoft%20SQL%20Overview-1693995997518.json)  
+#### 8. [Mikrotik Network Devices](https://github.com/lion896/Grafana/blob/main/dashboards/Mikrotik%20Network%20Devices-1693996005680.json)
+#### 9. [MySQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/MySQL%20Overview-1693996024010.json)  
+#### 10. [Network Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Network%20Overview-1693996030806.json)  
+#### 11. [Nginx Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Nginx%20Overview-1693996039461.json)  
+#### 12. [Oracle DB Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Oracle%20DB%20Overview-1693996052247.json)
+#### 13. [PostgreSQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/PostgreSQL%20Overview-1693996062871.json)  
+#### 14. [Printers Detail](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Detail-1693996070383.json)  
+#### 15. [Printers Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Overview-1693996078364.json)  
+#### 16. [RabbitMQ Overview](https://github.com/lion896/Grafana/blob/main/dashboards/RabbitMQ%20Overview-1693996085926.json)  
+#### 17. [Radius-Server Log Monitoring Full](https://github.com/lion896/Grafana/blob/main/dashboards/Radius-Server%20Log%20Monitoring%20Full-1693996096997.json)    
+#### 18. [SIP Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/SIP%20Monitoring-1693996111622.json)  
+#### 19. [Squid Log Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Squid%20Log%20Monitoring-1693472337304.json)  
+#### 20. [Synology Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Synology%20Monitoring-1693996122345.json)  
+#### 21. [UPS Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/UPS%20Monitoring-1693996131691.json)  
+#### 22. [VMware ESXI Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/VMware%20ESXI%20Monitoring-1693996140195.json)  
+#### 23. [VPN Connections Overview](https://github.com/lion896/Grafana/blob/main/dashboards/VPN%20Connections%20Overview-1693996149101.json)    
+#### 24. [VPN Connections Users](https://github.com/lion896/Grafana/blob/main/dashboards/VPN%20Connections%20Users-1693996157693.json)  
+#### 25. [Windows servers agent](https://github.com/lion896/Grafana/blob/main/dashboards/Windows%20servers%20agent-1693996167742.json)  
+#### 26. [Zabbix DB Replication](https://github.com/lion896/Grafana/blob/main/dashboards/Zabbix%20DB%20Replication-1693996176398.json)
