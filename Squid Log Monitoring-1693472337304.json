@@ -1,0 +1,1853 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_GRAYLOG_ELASTICSEARCH",
+      "label": "Graylog Elasticsearch",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "elasticsearch",
+      "pluginName": "Elasticsearch"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "briangann-datatable-panel",
+      "name": "Datatable Panel",
+      "version": "1.0.3"
+    },
+    {
+      "type": "datasource",
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "version": "1.0.0"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.10"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table-old",
+      "name": "Table (old)",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 4145,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "A6q5j2G4z"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 15,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "A6q5j2G4z"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "General Analisys",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 3,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "field": "Bytes",
+              "hide": false,
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND (Method:CONNECT OR Method:GET OR Method:POST) AND NOT Result_Code:\"TCP_DENIED\" AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "hide": true,
+          "metrics": [
+            {
+              "field": "Bytes",
+              "hide": false,
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            }
+          ],
+          "query": "URI_Host:$sites or $sites:*",
+          "refId": "B",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Total Traffic",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Sum MBytes",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "mbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 20,
+        "x": 4,
+        "y": 1
+      },
+      "id": 8,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "field": "Bytes",
+              "hide": false,
+              "id": "1",
+              "settings": {
+                "script": "_value/1024/1024"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND (Method:CONNECT OR Method:GET OR Method:POST) AND NOT Result_Code:\"TCP_DENIED\" AND (URI_Host:$sites or $sites:*)",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Traffic",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "User",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "field": "Bytes",
+              "hide": false,
+              "id": "1",
+              "type": "sum"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND NOT Result_Code:\"TCP_DENIED\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Top User Traffic",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 20,
+        "x": 4,
+        "y": 9
+      },
+      "id": 6,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND (Method:CONNECT OR Method:GET OR Method:POST) AND NOT Result_Code:\"TCP_DENIED\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "B",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Count",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 13
+      },
+      "id": 5,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "URI_Host",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "1"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "real_timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND NOT Result_Code:\"TCP_DENIED\" AND NOT URI_HOST:\"ocsp.int-x3.letsencrypt.org\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Top Visited Site",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "A6q5j2G4z"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 16,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "A6q5j2G4z"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Events",
+      "type": "row"
+    },
+    {
+      "columns": [],
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 0,
+        "y": 18
+      },
+      "id": 7,
+      "links": [],
+      "pageSize": 8,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:814",
+          "alias": "Count",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Count",
+          "type": "number",
+          "unit": "none"
+        },
+        {
+          "$$hashKey": "object:815",
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "User",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND NOT Result_Code:\"TCP_DENIED\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Hits of Users",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 4,
+        "y": 18
+      },
+      "id": 14,
+      "links": [],
+      "pageSize": 8,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:1015",
+          "alias": "Traffic",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Sum",
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "$$hashKey": "object:1016",
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "User",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "Bytes",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user AND NOT Result_Code:\"TCP_DENIED\" AND (Method:CONNECT OR Method:GET OR Method:POST)  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Traffic by User",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 8,
+        "y": 18
+      },
+      "id": 1,
+      "links": [],
+      "pageSize": 6,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "desc": false
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:412",
+          "alias": "Count",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Count",
+          "type": "number",
+          "unit": "none"
+        },
+        {
+          "$$hashKey": "object:413",
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "URI_Host",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user  AND NOT Result_Code:\"TCP_DENIED\"  AND NOT URI_HOST:\"ocsp.int-x3.letsencrypt.org\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Access",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "description": "",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 12,
+        "y": 18
+      },
+      "id": 19,
+      "links": [],
+      "pageSize": 8,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "desc": false
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:412",
+          "alias": "Count",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Count",
+          "type": "number",
+          "unit": "none"
+        },
+        {
+          "$$hashKey": "object:413",
+          "alias": "",
+          "align": "auto",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "URI_Host",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND source:$Proxy AND User:$user  AND Result_Code:\"TCP_DENIED\"  AND NOT URI_HOST:\"ocsp.int-x3.letsencrypt.org\"  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Access Denied",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 16,
+        "y": 18
+      },
+      "id": 11,
+      "links": [],
+      "maxDataPoints": 3,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "Result_Code",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Squid Codes",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 4,
+        "x": 20,
+        "y": 18
+      },
+      "id": 20,
+      "links": [],
+      "maxDataPoints": 3,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "source",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "source:$Proxy AND User:$user  AND (URI_Host:$sites or $sites:*)",
+          "refId": "A",
+          "target": "",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Proxy server",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "collapsed": true,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "A6q5j2G4z"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 17,
+      "panels": [
+        {
+          "alignNumbersToRightEnabled": true,
+          "columnAliases": [],
+          "columnFiltersEnabled": false,
+          "columnWidthHints": [],
+          "columns": [],
+          "compactRowsEnabled": false,
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "datatablePagingType": "full_numbers",
+          "datatableTheme": "basic_theme",
+          "emptyData": false,
+          "fontSize": "100%",
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 30
+          },
+          "hoverEnabled": true,
+          "id": 9,
+          "infoEnabled": true,
+          "lengthChangeEnabled": true,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "$$hashKey": "object:1269",
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "$$hashKey": "object:1270",
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "$$hashKey": "object:1271",
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "$$hashKey": "object:1272",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "$$hashKey": "object:1273",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "$$hashKey": "object:1274",
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 550,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 10,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "searchHighlightingEnabled": false,
+          "showCellBorders": false,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "sortByColumns": [
+            {
+              "$$hashKey": "object:1201",
+              "columnData": 0,
+              "sortMethod": "desc"
+            }
+          ],
+          "sortByColumnsData": [
+            [
+              2,
+              "desc"
+            ]
+          ],
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "$$hashKey": "object:1203",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "Sum Bytes",
+              "thresholds": [],
+              "type": "number",
+              "unit": "decbytes"
+            },
+            {
+              "$$hashKey": "object:1204",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "Sum Duration",
+              "thresholds": [],
+              "type": "number",
+              "unit": "dtdurationms"
+            },
+            {
+              "$$hashKey": "object:1205",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 0,
+              "pattern": "Count",
+              "thresholds": [],
+              "type": "number",
+              "unit": "none"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "URI_Host",
+                  "id": "12",
+                  "settings": {
+                    "min_doc_count": 1,
+                    "order": "desc",
+                    "orderBy": "_count",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "datasource": {
+                "type": "elasticsearch",
+                "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+              },
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "select field",
+                  "id": "1",
+                  "type": "count"
+                },
+                {
+                  "field": "Bytes",
+                  "id": "9",
+                  "meta": {},
+                  "settings": {},
+                  "type": "sum"
+                },
+                {
+                  "field": "Duration",
+                  "id": "11",
+                  "meta": {},
+                  "settings": {},
+                  "type": "sum"
+                }
+              ],
+              "query": "source:$Proxy AND User:$user AND (Method:CONNECT OR Method:GET OR Method:POST) AND NOT Result_Code:\"TCP_DENIED\" AND (URI_Host:$sites or $sites:*)",
+              "refId": "A",
+              "target": "",
+              "timeField": "timestamp"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "$$hashKey": "object:1244",
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "$$hashKey": "object:1245",
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "$$hashKey": "object:1246",
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "$$hashKey": "object:1247",
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Top Sites",
+          "transform": "table",
+          "type": "briangann-datatable-panel"
+        },
+        {
+          "alignNumbersToRightEnabled": true,
+          "columnAliases": [],
+          "columnFiltersEnabled": false,
+          "columnWidthHints": [],
+          "columns": [],
+          "compactRowsEnabled": true,
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+          },
+          "datatablePagingType": "full_numbers",
+          "datatableTheme": "basic_theme",
+          "emptyData": false,
+          "fontSize": "90%",
+          "gridPos": {
+            "h": 19,
+            "w": 24,
+            "x": 0,
+            "y": 46
+          },
+          "hoverEnabled": true,
+          "id": 18,
+          "infoEnabled": true,
+          "lengthChangeEnabled": true,
+          "links": [],
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "$$hashKey": "object:1548",
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "$$hashKey": "object:1549",
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "$$hashKey": "object:1550",
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "$$hashKey": "object:1551",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "$$hashKey": "object:1552",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "$$hashKey": "object:1553",
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 330,
+          "rowNumbersEnabled": false,
+          "rowsPerPage": 10,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "searchHighlightingEnabled": false,
+          "showCellBorders": true,
+          "showHeader": true,
+          "showRowBorders": false,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "sortByColumns": [
+            {
+              "$$hashKey": "object:1505",
+              "columnData": 0,
+              "sortMethod": "desc"
+            }
+          ],
+          "sortByColumnsData": [
+            [
+              4,
+              "desc"
+            ]
+          ],
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "$$hashKey": "object:1507",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "real_timestamp",
+              "thresholds": [],
+              "type": "date",
+              "unit": "decbytes"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "13",
+                  "settings": {
+                    "min_doc_count": 1,
+                    "order": "desc",
+                    "orderBy": "_count",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "Client_Address",
+                  "id": "14",
+                  "settings": {
+                    "min_doc_count": 1,
+                    "order": "desc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "User",
+                  "id": "15",
+                  "settings": {
+                    "min_doc_count": 1,
+                    "order": "desc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "URI",
+                  "id": "16",
+                  "settings": {
+                    "min_doc_count": 1,
+                    "order": "desc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "field": "source",
+                  "id": "17",
+                  "settings": {
+                    "min_doc_count": "1",
+                    "order": "desc",
+                    "orderBy": "_term",
+                    "size": "10"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "datasource": {
+                "type": "elasticsearch",
+                "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+              },
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "select field",
+                  "id": "1",
+                  "type": "count"
+                }
+              ],
+              "query": "source:$Proxy AND User:$user AND (Method:CONNECT OR Method:GET OR Method:POST) AND NOT Result_Code:\"TCP_DENIED\" AND (URI_Host:$sites or $sites:*)",
+              "refId": "A",
+              "target": "",
+              "timeField": "timestamp"
+            }
+          ],
+          "themeOptions": {
+            "dark": "./css/datatable-dark.css",
+            "light": "./css/datatable-light.css"
+          },
+          "themes": [
+            {
+              "$$hashKey": "object:1523",
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "$$hashKey": "object:1524",
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "$$hashKey": "object:1525",
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "$$hashKey": "object:1526",
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Sites by users",
+          "transform": "table",
+          "type": "briangann-datatable-panel"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "A6q5j2G4z"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Details",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "squid"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+        },
+        "definition": "{\"find\": \"terms\", \"field\":\"source\" }",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Proxy name",
+        "multi": false,
+        "name": "Proxy",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\":\"source\" }",
+        "refresh": 1,
+        "regex": "/.*/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "${DS_GRAYLOG_ELASTICSEARCH}"
+        },
+        "definition": "{\"find\": \"terms\", \"field\":\"User\",\"size\": \"1000\" }",
+        "hide": 0,
+        "includeAll": true,
+        "label": "User",
+        "multi": true,
+        "name": "user",
+        "options": [],
+        "query": "{\"find\": \"terms\", \"field\":\"User\",\"size\": \"1000\" }",
+        "refresh": 2,
+        "regex": "^(?!.*-).*$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "*",
+          "value": "*"
+        },
+        "description": "для вывода данных по всем сайтам введите *",
+        "hide": 0,
+        "label": "Sites (all sites: *)",
+        "name": "sites",
+        "options": [
+          {
+            "selected": true,
+            "text": "*",
+            "value": "*"
+          }
+        ],
+        "query": "*",
+        "skipUrlSync": false,
+        "type": "textbox"
+      },
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "ZEfIH9UVz"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Squid Log Monitoring",
+  "uid": "000000060",
+  "version": 19,
+  "weekStart": ""
+}
