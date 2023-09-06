@@ -1,0 +1,450 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "alexanderzobnin-zabbix-triggers-panel",
+      "name": "Zabbix Problems",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.10"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "ackEventColor": "rgb(56, 219, 156)",
+      "ackField": true,
+      "ageField": true,
+      "customLastChangeFormat": false,
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "descriptionAtNewLine": false,
+      "descriptionField": true,
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 20,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "highlightBackground": false,
+      "highlightNewEvents": true,
+      "highlightNewerThan": "1h",
+      "hostField": true,
+      "hostGroups": true,
+      "hostProxy": false,
+      "hostTechNameField": false,
+      "id": 2,
+      "lastChangeFormat": "",
+      "layout": "table",
+      "markAckEvents": true,
+      "okEventColor": "rgb(56, 189, 113)",
+      "options": {
+        "ackEventColor": "rgb(56, 219, 156)",
+        "ackField": false,
+        "ageField": true,
+        "allowDangerousHTML": false,
+        "customLastChangeFormat": false,
+        "descriptionAtNewLine": false,
+        "descriptionField": true,
+        "fontSize": "100%",
+        "highlightBackground": false,
+        "highlightNewEvents": true,
+        "highlightNewerThan": "1h",
+        "hostField": true,
+        "hostGroups": true,
+        "hostProxy": false,
+        "hostTechNameField": false,
+        "lastChangeFormat": "",
+        "layout": "table",
+        "markAckEvents": true,
+        "okEventColor": "rgb(56, 189, 113)",
+        "opdataField": true,
+        "pageSize": 20,
+        "problemTimeline": true,
+        "resizedColumns": [
+          {
+            "id": "statusIcon",
+            "value": 88
+          },
+          {
+            "id": "severity",
+            "value": 135
+          },
+          {
+            "id": "description",
+            "value": 363.859375
+          },
+          {
+            "id": "tags",
+            "value": 237.9375
+          },
+          {
+            "id": "ack",
+            "value": 61
+          },
+          {
+            "id": "host",
+            "value": 184.609375
+          },
+          {
+            "id": "lastchange",
+            "value": 187
+          },
+          {
+            "id": "groups",
+            "value": 195.59375
+          },
+          {
+            "id": "opdata",
+            "value": 174
+          },
+          {
+            "id": "age",
+            "value": 104
+          },
+          {
+            "id": "name",
+            "value": 590.859375
+          }
+        ],
+        "severityField": true,
+        "showTags": false,
+        "sortProblems": "default",
+        "statusField": true,
+        "statusIcon": false,
+        "triggerSeverity": [
+          {
+            "$$hashKey": "object:407",
+            "color": "rgb(108, 108, 108)",
+            "priority": 0,
+            "severity": "Not classified",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:408",
+            "color": "rgb(120, 158, 183)",
+            "priority": 1,
+            "severity": "Information",
+            "show": false
+          },
+          {
+            "$$hashKey": "object:409",
+            "color": "rgb(175, 180, 36)",
+            "priority": 2,
+            "severity": "Warning",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:410",
+            "color": "rgb(255, 137, 30)",
+            "priority": 3,
+            "severity": "Average",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:411",
+            "color": "rgb(255, 101, 72)",
+            "priority": 4,
+            "severity": "High",
+            "show": true
+          },
+          {
+            "$$hashKey": "object:412",
+            "color": "rgb(215, 0, 0)",
+            "priority": 5,
+            "severity": "Disaster",
+            "show": true
+          }
+        ]
+      },
+      "pageSize": 20,
+      "pluginVersion": "9.4.10",
+      "problemTimeline": true,
+      "resizedColumns": [
+        {
+          "id": "age",
+          "value": 90
+        },
+        {
+          "id": "statusIcon",
+          "value": 88
+        },
+        {
+          "id": "lastchange",
+          "value": 230
+        },
+        {
+          "id": "host",
+          "value": 162.609375
+        },
+        {
+          "id": "severity",
+          "value": 135
+        },
+        {
+          "id": "description",
+          "value": 363.859375
+        },
+        {
+          "id": "ack",
+          "value": 41
+        },
+        {
+          "id": "tags",
+          "value": 351.9375
+        },
+        {
+          "id": "groups",
+          "value": 175.59375
+        }
+      ],
+      "schemaVersion": 8,
+      "severityField": true,
+      "showTags": true,
+      "sortProblems": "default",
+      "statusField": true,
+      "statusIcon": false,
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "$Group"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "severities": [],
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "severity",
+            "useTimeRange": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "5",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": "monitoring"
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": "/^(?!.*ovpn.*$)/"
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Problems notifications",
+      "transparent": true,
+      "triggerSeverity": [
+        {
+          "$$hashKey": "object:407",
+          "color": "rgb(108, 108, 108)",
+          "priority": 0,
+          "severity": "Not classified",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:408",
+          "color": "rgb(120, 158, 183)",
+          "priority": 1,
+          "severity": "Information",
+          "show": false
+        },
+        {
+          "$$hashKey": "object:409",
+          "color": "rgb(175, 180, 36)",
+          "priority": 2,
+          "severity": "Warning",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:410",
+          "color": "rgb(255, 137, 30)",
+          "priority": 3,
+          "severity": "Average",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:411",
+          "color": "rgb(255, 101, 72)",
+          "priority": 4,
+          "severity": "High",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:412",
+          "color": "rgb(215, 0, 0)",
+          "priority": 5,
+          "severity": "Disaster",
+          "show": true
+        }
+      ],
+      "type": "alexanderzobnin-zabbix-triggers-panel"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "zabbix"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "${DS_ZABBIX}"
+        },
+        "definition": "Zabbix - group",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Group",
+        "multi": true,
+        "name": "Group",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "",
+          "item": "",
+          "itemTag": "",
+          "queryType": "group"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "${DS_ZABBIX}"
+        },
+        "definition": "Zabbix - host",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Host",
+        "multi": true,
+        "name": "Host",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/$Group/",
+          "host": "/.*/",
+          "item": "",
+          "itemTag": "",
+          "queryType": "host"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "All Problems",
+  "uid": "amz4ZWS4z",
+  "version": 11,
+  "weekStart": ""
+}

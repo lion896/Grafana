@@ -1,0 +1,1697 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "briangann-datatable-panel",
+      "name": "Datatable Panel",
+      "version": "1.0.3"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.10"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "Количество записей в log-файле на Radius-сервере за выбранный период",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 0
+      },
+      "id": 26,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "count"
+          ],
+          "fields": "/^RadiusRotateFillterSkip$/",
+          "values": false
+        },
+        "text": {
+          "valueSize": 51
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "RadiusRotateFillterSkip"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 1,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useTimeRange": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "history",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": ".",
+          "trigger": {
+            "filter": "User locked"
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        }
+      ],
+      "title": "Записей в log-файле",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "boolean",
+                "targetField": "RadiusRotateFillter"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "RadiusRotateFillter"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "fixed",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": -1,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "stepAfter",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 11
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 20,
+        "x": 4,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "none",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "RadiusRotateFillterSkip"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": false,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 1,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useTimeRange": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "history",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": "User locked"
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": false
+          },
+          "useCaptureGroups": false
+        }
+      ],
+      "title": "Распределение добавления новых записей в log-файл по времени",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "boolean",
+                "targetField": "RadiusRotateFillterSkip"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "RadiusRotateFillterSkip"
+              }
+            ],
+            "fields": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "RadiusRotate": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "RadiusRotateFillter": {
+                "aggregations": [
+                  "count"
+                ],
+                "operation": "aggregate"
+              },
+              "RadiusRotateFillterSkip": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Time": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "RadiusRotateFillterSkip (sum)": false,
+              "Time": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "RadiusRotate (count)": "Количество записей",
+              "RadiusRotateFillter": "",
+              "RadiusRotateFillter (count)": "Количество записей",
+              "RadiusRotateFillterSkip (sum)": "Записей в log-файле",
+              "Time": ""
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "195.91.162.129": {
+                  "index": 1,
+                  "text": "195.91.162.129 (RINET)"
+                },
+                "195.91.162.178": {
+                  "index": 2,
+                  "text": "195.91.162.178 (RINET)"
+                },
+                "79.111.246.224": {
+                  "index": 0,
+                  "text": "79.111.246.224 (Net By Net)"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP вызывающей стороны"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Подробная информация об IP",
+                    "url": "https://ipapi.co/?q=${__value.raw}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 215
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Логин"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 162
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Перейти в дашборд VPN Connections Users",
+                    "url": "https://monitoring.psbins.ru/d/2_X8n4y4k/vpn-connections-users?orgId=1&var-User=interface:%20<ovpn-${__data.fields[\"login name\"]}﻿﻿>&from=now-7d&to=now&var-host=All"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP вызываемой стороны"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 244
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Дата-время"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 220
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP полученный клиентом"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 215
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Имя Radius-сервера"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 190
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Имя NAS (network access server)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 147
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP NAS"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 114
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "GEO3"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 102
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Город"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 149
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Страна"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 114
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 2,
+      "options": {
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Дата-время"
+          }
+        ]
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "DateTime"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "login name"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Called ip"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Calling ip"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "GEO3"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Framed ip"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "NameRds"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "NAS name"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "NAS IP"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Windows Servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "GEO2"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": true,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "sortProblems": "default",
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "slaInterval": "none",
+          "slaProperty": "sla",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          },
+          "useCaptureGroups": false
+        }
+      ],
+      "title": "Данные из записей лога Radius сервера",
+      "transformations": [
+        {
+          "id": "joinByField",
+          "options": {
+            "mode": "outer"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Radius Called ip": false,
+              "Radius Calling ip": false,
+              "Radius Framed ip": false,
+              "Radius date": false,
+              "Radius login": false,
+              "Radius name": false,
+              "Radius nas": false,
+              "Radius nas ip": false,
+              "Time": true
+            },
+            "indexByName": {
+              "Called ip": 3,
+              "Calling ip": 4,
+              "DateTime": 1,
+              "Framed ip": 7,
+              "GEO2": 6,
+              "GEO3": 5,
+              "NAS IP": 10,
+              "NAS name": 9,
+              "NameRds": 8,
+              "Time": 0,
+              "login name": 2
+            },
+            "renameByName": {
+              "Called ip": "IP вызываемой стороны",
+              "Calling ip": "IP вызывающей стороны",
+              "DateTime": "Дата-время",
+              "Framed ip": "IP полученный клиентом",
+              "GEO2": "Город",
+              "GEO3": "Страна",
+              "NAS IP": "IP NAS",
+              "NAS name": "Имя NAS (network access server)",
+              "NameRds": "Имя Radius-сервера",
+              "Radius Called ip": "IP вызываемой стороны",
+              "Radius Calling ip": "IP вызывающей стороны",
+              "Radius Framed ip": "IP полученный клиентом",
+              "Radius date": "Дата-время",
+              "Radius login": "Логин",
+              "Radius name": "Имя Radius-сервера",
+              "Radius nas": "Имя NAS (network access server - сервер, предоставляющий доступ в сеть)",
+              "Radius nas ip": "IP NAS",
+              "login name": "Логин"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 29,
+      "panels": [
+        {
+          "alignNumbersToRightEnabled": true,
+          "columnAliases": [],
+          "columnFiltersEnabled": false,
+          "columnWidthHints": [
+            {
+              "$$hashKey": "object:3604",
+              "name": "Time",
+              "width": "100px"
+            }
+          ],
+          "columns": [],
+          "compactRowsEnabled": false,
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "datatablePagingType": "simple_numbers",
+          "datatableTheme": "basic_theme",
+          "description": "",
+          "emptyData": false,
+          "fontSize": "100%",
+          "gridPos": {
+            "h": 36,
+            "w": 24,
+            "x": 0,
+            "y": 23
+          },
+          "hoverEnabled": true,
+          "id": 27,
+          "infoEnabled": true,
+          "lengthChangeEnabled": true,
+          "orderColumnEnabled": true,
+          "pagingTypes": [
+            {
+              "$$hashKey": "object:3068",
+              "text": "Page number buttons only",
+              "value": "numbers"
+            },
+            {
+              "$$hashKey": "object:3069",
+              "text": "'Previous' and 'Next' buttons only",
+              "value": "simple"
+            },
+            {
+              "$$hashKey": "object:3070",
+              "text": "'Previous' and 'Next' buttons, plus page numbers",
+              "value": "simple_numbers"
+            },
+            {
+              "$$hashKey": "object:3071",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons",
+              "value": "full"
+            },
+            {
+              "$$hashKey": "object:3072",
+              "text": "'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers",
+              "value": "full_numbers"
+            },
+            {
+              "$$hashKey": "object:3073",
+              "text": "'First' and 'Last' buttons, plus page numbers",
+              "value": "first_last_numbers"
+            }
+          ],
+          "panelHeight": 330,
+          "pluginVersion": "9.1.3",
+          "rowNumbersEnabled": true,
+          "rowsPerPage": 5,
+          "scroll": false,
+          "scrollHeight": "default",
+          "searchEnabled": true,
+          "searchHighlightingEnabled": true,
+          "showCellBorders": true,
+          "showHeader": true,
+          "showRowBorders": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "sortByColumns": [
+            {
+              "$$hashKey": "object:3010",
+              "columnData": 0,
+              "sortMethod": "desc"
+            }
+          ],
+          "sortByColumnsData": [
+            [
+              3,
+              "asc"
+            ]
+          ],
+          "stripedRowsEnabled": true,
+          "styles": [
+            {
+              "$$hashKey": "object:3012",
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "pattern": "Time",
+              "type": "hidden"
+            },
+            {
+              "$$hashKey": "object:3013",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "decimals": 2,
+              "pattern": "Value",
+              "splitPattern": "/ /",
+              "thresholds": [],
+              "type": "string",
+              "unit": "short"
+            },
+            {
+              "$$hashKey": "object:4651",
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "mappingType": 1,
+              "pattern": "Metric",
+              "splitPattern": "/ /",
+              "thresholds": [],
+              "type": "hidden",
+              "unit": "short"
+            }
+          ],
+          "targets": [
+            {
+              "application": {
+                "filter": ""
+              },
+              "countTriggersBy": "",
+              "datasource": {
+                "type": "alexanderzobnin-zabbix-datasource",
+                "uid": "${DS_ZABBIX}"
+              },
+              "functions": [],
+              "group": {
+                "filter": "Windows Servers"
+              },
+              "hide": false,
+              "host": {
+                "filter": "$host"
+              },
+              "item": {
+                "filter": "RadiusRotateFillterSkip"
+              },
+              "itemTag": {
+                "filter": ""
+              },
+              "macro": {
+                "filter": ""
+              },
+              "options": {
+                "acknowledged": 2,
+                "count": true,
+                "disableDataAlignment": false,
+                "hostProxy": false,
+                "hostsInMaintenance": false,
+                "limit": 1001,
+                "minSeverity": 3,
+                "showDisabledItems": false,
+                "skipEmptyValues": true,
+                "sortProblems": "default",
+                "useTrends": "default",
+                "useZabbixValueMapping": false
+              },
+              "proxy": {
+                "filter": ""
+              },
+              "queryType": "2",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "schema": 12,
+              "showProblems": "problems",
+              "slaInterval": "none",
+              "slaProperty": "sla",
+              "table": {
+                "skipEmptyValues": false
+              },
+              "tags": {
+                "filter": ""
+              },
+              "textFilter": "",
+              "trigger": {
+                "filter": ""
+              },
+              "triggers": {
+                "acknowledged": 2
+              },
+              "useCaptureGroups": false
+            }
+          ],
+          "themeOptions": {
+            "dark": "./styles/dark.scss",
+            "light": "./styles/light.scss"
+          },
+          "themes": [
+            {
+              "$$hashKey": "object:3043",
+              "disabled": false,
+              "text": "Basic",
+              "value": "basic_theme"
+            },
+            {
+              "$$hashKey": "object:3044",
+              "disabled": true,
+              "text": "Bootstrap",
+              "value": "bootstrap_theme"
+            },
+            {
+              "$$hashKey": "object:3045",
+              "disabled": true,
+              "text": "Foundation",
+              "value": "foundation_theme"
+            },
+            {
+              "$$hashKey": "object:3046",
+              "disabled": true,
+              "text": "ThemeRoller",
+              "value": "themeroller_theme"
+            }
+          ],
+          "title": "Поиск по логам Radius-сервера",
+          "transform": "timeseries_to_rows",
+          "transformations": [],
+          "type": "briangann-datatable-panel"
+        }
+      ],
+      "title": "Full Log",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "ad",
+    "vpn"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "${DS_ZABBIX}"
+        },
+        "definition": "Zabbix - host",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "/DC03|dc-cloud/",
+          "item": "",
+          "itemTag": "",
+          "queryType": "host"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Radius-Server Log Monitoring Full",
+  "uid": "1mTpqCFRa",
+  "version": 81,
+  "weekStart": ""
+}

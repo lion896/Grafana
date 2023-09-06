@@ -1,0 +1,6114 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "farski-blendstat-panel",
+      "name": "Blendstat",
+      "version": "1.0.3"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.10"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Data from Zabbix agent",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 1323,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "DOWN"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(245, 54, 54, 0.9)",
+                "value": null
+              },
+              {
+                "color": "rgb(18, 251, 0)",
+                "value": 0
+              },
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      "id": 30,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Zabbix agent"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "ICMP ping"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "Ping",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#8b8989",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 10,
+        "x": 2,
+        "y": 0
+      },
+      "id": 13,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^System information$/",
+          "values": false
+        },
+        "text": {
+          "titleSize": 20,
+          "valueSize": 18
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "OS"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "System information"
+          },
+          "itemTag": {
+            "filter": "Application: General"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          },
+          "useCaptureGroups": false
+        }
+      ],
+      "title": "OS info",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 14,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Version of zabbix_agent\\(d\\) running$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Zabbix agent"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Version of zabbix_agent(d) running"
+          },
+          "itemTag": {
+            "filter": "Application: Zabbix agent"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "2",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "Agent Version",
+      "type": "stat"
+    },
+    {
+      "blendName": "total",
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "format": "dtdurations",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 16,
+        "y": 0
+      },
+      "id": 19,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "System uptime"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "thresholds": "",
+      "title": "Uptime",
+      "type": "farski-blendstat-panel",
+      "valueFontSize": "100%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 5,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 50
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Memory"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Available memory in %"
+          },
+          "itemTag": {
+            "filter": "component: memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Free RAM %",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 3
+      },
+      "id": 17,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU system time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU user time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU softirq time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU nice time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU interrupt time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU idle time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU iowait time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "CPU steal time"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "CPU utilisation %",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 15,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 3
+      },
+      "id": 7,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "CPU"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Processor load (1 min average)"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": "CPU"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Processor load (5 min average)"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": "CPU"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Processor load (15 min average)"
+          },
+          "itemTag": {
+            "filter": "Application: CPU"
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "Processor Load Average",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Memory"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Available memory"
+          },
+          "itemTag": {
+            "filter": "Application: Memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Memory"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total memory"
+          },
+          "itemTag": {
+            "filter": "Application: Memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used RAM",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used Memory",
+            "binary": {
+              "left": "$host: Total memory",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "$host: Available memory"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Grafana2: Available memory": true,
+              "Grafana: Available memory": true,
+              "Zabbix server: Available memory": true,
+              "Zabbix_cloud: Available memory": true,
+              "astra-print: Available memory": true,
+              "b2b-mysql: Available memory": true,
+              "b2b03: Available memory": true,
+              "b2b04: Available memory": true,
+              "bearpass: Available memory": true,
+              "dms-ws: Available memory": true,
+              "drweb12: Available memory": true,
+              "files-cloud: Available memory": true,
+              "grafana2: Available memory": true,
+              "grafana: Available memory": true,
+              "lk01: Available memory": true,
+              "lmc-s1: Available memory": true,
+              "lmc-s2: Available memory": true,
+              "portal-cloud-copy: Available memory": true,
+              "portal-new: Available memory": true,
+              "proxy03: Available memory": true,
+              "proxy04: Available memory": true,
+              "rabbitMQ-test: Available memory": true,
+              "rabbitMQ2: Available memory": true,
+              "rabbitMQ: Available memory": true,
+              "sip.smpins.ru: Available memory": true,
+              "skud-debian: Available memory": true,
+              "smpins-web-NW: Available memory": true,
+              "wso2: Available memory": true,
+              "xwiki: Available memory": true,
+              "zabbix-cloud: Available memory": true,
+              "zabbix-server: Available memory": true,
+              "zabbix2: Available memory": true,
+              "zabbix_cloud: Available memory": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Available memory": "",
+              "Grafana2: Total memory": "Total memory",
+              "Used Memory": "",
+              "Zabbix_cloud: Available memory": "",
+              "Zabbix_cloud: Total memory": "Total memory",
+              "grafana2: Available memory": "",
+              "grafana2: Total memory": "",
+              "lmc-s1: Available memory": "",
+              "lmc-s1: Total memory": "Total memory",
+              "lmc-s2: Available memory": "",
+              "lmc-s2: Total memory": "Total memory",
+              "wso2: Available memory": "",
+              "wso2: Total memory": "Total memory",
+              "zabbix-cloud: Total memory": "",
+              "zabbix_cloud: Available memory": "",
+              "zabbix_cloud: Total memory": ""
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 9
+      },
+      "id": 6,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Memory"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free swap space"
+          },
+          "itemTag": {
+            "filter": "Application: Memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Memory"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total swap space"
+          },
+          "itemTag": {
+            "filter": "Application: Memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used Swap",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used swap space",
+            "binary": {
+              "left": "$host: Total swap space",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "$host: Free swap space"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Grafana2: Free swap space": true,
+              "Grafana: Free swap space": true,
+              "Used swap space": false,
+              "Zabbix server: Free swap space": true,
+              "Zabbix_cloud: Free swap space": true,
+              "astra-print: Free swap space": true,
+              "b2b-mysql: Free swap space": true,
+              "b2b03: Free swap space": true,
+              "b2b04: Free swap space": true,
+              "bearpass: Free swap space": true,
+              "dms-ws: Free swap space": true,
+              "drweb12: Free swap space": true,
+              "files-cloud: Free swap space": true,
+              "grafana2: Free swap space": true,
+              "grafana: Free swap space": true,
+              "lk01: Free swap space": true,
+              "lmc-s1: Free swap space": true,
+              "lmc-s2: Free swap space": true,
+              "portal-cloud-copy: Free swap space": true,
+              "portal-new: Free swap space": true,
+              "proxy03: Free swap space": true,
+              "proxy04: Free swap space": true,
+              "rabbitMQ-test: Free swap space": true,
+              "rabbitMQ2: Free swap space": true,
+              "rabbitMQ: Free swap space": true,
+              "sip.smpins.ru: Free swap space": true,
+              "skud-debian: Free swap space": true,
+              "smpins-web-NW: Free swap space": true,
+              "wso2: Free swap space": true,
+              "xwiki: Free swap space": true,
+              "zabbix-cloud: Free swap space": true,
+              "zabbix-server: Free swap space": true,
+              "zabbix_cloud: Free swap space": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free swap space": "",
+              "Grafana2: Total swap space": "Total swap space",
+              "Zabbix_cloud: Free swap space": "",
+              "Zabbix_cloud: Total swap space": "Total swap space",
+              "grafana2: Free swap space": "",
+              "grafana2: Total swap space": "Total swap space",
+              "lmc-s1: Free swap space": "",
+              "lmc-s1: Total swap space": "Total swap space",
+              "lmc-s2: Free swap space": "",
+              "lmc-s2: Total swap space": "Total swap space",
+              "wso2: Free swap space": "",
+              "wso2: Total swap space": "Total swap space"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 9
+      },
+      "id": 25,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free inodes on / (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": true,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free inodes on /boot (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Free inodes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 16
+      },
+      "id": 9,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 16,
+          "valueSize": 40
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:204",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:205",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": true,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/Free disk space on.*(percentage)/"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on / (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used disk space %",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Grafana: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix server: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix server: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix_cloud: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix_cloud: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "astra-print: Free disk space on / (percentage)": "Disk: /",
+              "b2b-mysql: Free disk space on / (percentage)": "Disk: /",
+              "b2b-mysql: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "b2b03: Free disk space on / (percentage)": "Disk: /",
+              "b2b03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "b2b04: Free disk space on / (percentage)": "Disk: /",
+              "b2b04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "bearpass: Free disk space on / (percentage)": "Disk: /",
+              "bearpass: Free disk space on /boot (percentage)": "Disk: /boot",
+              "dms-ws: Free disk space on / (percentage)": "Disk: /",
+              "dms-ws: Free disk space on /boot (percentage)": "Disk: /boot",
+              "drweb12: Free disk space on / (percentage)": "Disk: /",
+              "drweb12: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "files-cloud: Free disk space on / (percentage)": "Disk:  /",
+              "files-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "files-cloud: Free disk space on /mnt/disk-m (percentage)": "Disk: /mnt/disk-m",
+              "files-cloud: Free disk space on /mnt/it_dms (percentage)": "Disk: /mnt/it_dms",
+              "grafana2: Free disk space on / (percentage)": "Disk: /",
+              "grafana: Free disk space on / (percentage)": "Disk: /",
+              "grafana: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lk01: Free disk space on / (percentage)": "Disk: /",
+              "lk01: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s1: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s1: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s2: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-cloud-copy: Free disk space on / (percentage)": "Disk: /",
+              "portal-cloud-copy: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-new: Free disk space on / (percentage)": "Disk: /",
+              "portal-new: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy03: Free disk space on / (percentage)": "Disk: /",
+              "proxy03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy04: Free disk space on / (percentage)": "Disk: /",
+              "proxy04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ-test: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ2: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ2: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ: Free disk space on /home (percentage)": "Disk: /home",
+              "sip.smpins.ru: Free disk space on / (percentage)": "Disk: /",
+              "sip.smpins.ru: Free disk space on /boot (percentage)": "Disk: /boot",
+              "sip.smpins.ru: Free disk space on /var/log (percentage)": "Disk: /var/log",
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor (percentage)": "Disk: /var/spool/asterisk/monitor",
+              "skud-debian: Free disk space on / (percentage)": "Disk: /",
+              "skud-debian: Free disk space on /boot (percentage)": "Disk: /boot",
+              "smpins-web-NW: Free disk space on / (percentage)": "Disk: /",
+              "smpins-web-NW: Free disk space on /boot (percentage)": "Disk: /boot",
+              "wso2: Free disk space on / (percentage)": "Disk: /",
+              "wso2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "xwiki: Free disk space on / (percentage)": "Disk: /",
+              "xwiki: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-server: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-server: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix2: Free disk space on / (percentage)": "Used disk space on /",
+              "zabbix2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "zabbix_cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix_cloud: Free disk space on /boot (percentage)": "Disk: /boot"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 16
+      },
+      "id": 32,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 16,
+          "valueSize": 40
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /boot (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used disk space %",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Grafana: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix server: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix server: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix_cloud: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix_cloud: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "b2b-mysql: Free disk space on / (percentage)": "Disk: /",
+              "b2b-mysql: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "b2b03: Free disk space on / (percentage)": "Disk: /",
+              "b2b03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "b2b04: Free disk space on / (percentage)": "Disk: /",
+              "b2b04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "bearpass: Free disk space on / (percentage)": "Disk: /",
+              "bearpass: Free disk space on /boot (percentage)": "Disk: /boot",
+              "dms-ws: Free disk space on / (percentage)": "Disk: /",
+              "dms-ws: Free disk space on /boot (percentage)": "Disk: /boot",
+              "drweb12: Free disk space on / (percentage)": "Disk: /",
+              "drweb12: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "files-cloud: Free disk space on / (percentage)": "Disk:  /",
+              "files-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "files-cloud: Free disk space on /mnt/disk-m (percentage)": "Disk: /mnt/disk-m",
+              "files-cloud: Free disk space on /mnt/it_dms (percentage)": "Disk: /mnt/it_dms",
+              "grafana2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "grafana: Free disk space on / (percentage)": "Disk: /",
+              "grafana: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lk01: Free disk space on / (percentage)": "Disk: /",
+              "lk01: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s1: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s1: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s2: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-cloud-copy: Free disk space on / (percentage)": "Disk: /",
+              "portal-cloud-copy: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-new: Free disk space on / (percentage)": "Disk: /",
+              "portal-new: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy03: Free disk space on / (percentage)": "Disk: /",
+              "proxy03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy04: Free disk space on / (percentage)": "Disk: /",
+              "proxy04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ-test: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ2: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ2: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ: Free disk space on /home (percentage)": "Disk: /home",
+              "sip.smpins.ru: Free disk space on / (percentage)": "Disk: /",
+              "sip.smpins.ru: Free disk space on /boot (percentage)": "Disk: /boot",
+              "sip.smpins.ru: Free disk space on /var/log (percentage)": "Disk: /var/log",
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor (percentage)": "Disk: /var/spool/asterisk/monitor",
+              "skud-debian: Free disk space on / (percentage)": "Disk: /",
+              "skud-debian: Free disk space on /boot (percentage)": "Disk: /boot",
+              "smpins-web-NW: Free disk space on / (percentage)": "Disk: /",
+              "smpins-web-NW: Free disk space on /boot (percentage)": "Disk: /boot",
+              "wso2: Free disk space on / (percentage)": "Disk: /",
+              "wso2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "xwiki: Free disk space on / (percentage)": "Disk: /",
+              "xwiki: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-server: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-server: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix2: Free disk space on / (percentage)": "Used disk space on /",
+              "zabbix2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "zabbix_cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix_cloud: Free disk space on /boot (percentage)": "Disk: /boot"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 16
+      },
+      "id": 33,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 16,
+          "valueSize": 40
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /mnt/disk-m (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /var/log (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /home (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used disk space %",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Grafana: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix server: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix server: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix_cloud: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix_cloud: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "astra-print: Free disk space on /home (percentage)": "Disk: /home",
+              "b2b-mysql: Free disk space on / (percentage)": "Disk: /",
+              "b2b-mysql: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "b2b03: Free disk space on / (percentage)": "Disk: /",
+              "b2b03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "b2b04: Free disk space on / (percentage)": "Disk: /",
+              "b2b04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "bearpass: Free disk space on / (percentage)": "Disk: /",
+              "bearpass: Free disk space on /boot (percentage)": "Disk: /boot",
+              "dms-ws: Free disk space on / (percentage)": "Disk: /",
+              "dms-ws: Free disk space on /boot (percentage)": "Disk: /boot",
+              "drweb12: Free disk space on / (percentage)": "Disk: /",
+              "drweb12: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "files-cloud: Free disk space on / (percentage)": "Disk:  /",
+              "files-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "files-cloud: Free disk space on /mnt/disk-m (percentage)": "Disk: /mnt/disk-m",
+              "files-cloud: Free disk space on /mnt/it_dms (percentage)": "Disk: /mnt/it_dms",
+              "grafana: Free disk space on / (percentage)": "Disk: /",
+              "grafana: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lk01: Free disk space on / (percentage)": "Disk: /",
+              "lk01: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s1: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s1: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s2: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-cloud-copy: Free disk space on / (percentage)": "Disk: /",
+              "portal-cloud-copy: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-new: Free disk space on / (percentage)": "Disk: /",
+              "portal-new: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy03: Free disk space on / (percentage)": "Disk: /",
+              "proxy03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy04: Free disk space on / (percentage)": "Disk: /",
+              "proxy04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ-test: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ2: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ2: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ: Free disk space on /home (percentage)": "Disk: /home",
+              "sip.smpins.ru: Free disk space on / (percentage)": "Disk: /",
+              "sip.smpins.ru: Free disk space on /boot (percentage)": "Disk: /boot",
+              "sip.smpins.ru: Free disk space on /var/log (percentage)": "Disk: /var/log",
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor (percentage)": "Disk: /var/spool/asterisk/monitor",
+              "skud-debian: Free disk space on / (percentage)": "Disk: /",
+              "skud-debian: Free disk space on /boot (percentage)": "Disk: /boot",
+              "smpins-web-NW: Free disk space on / (percentage)": "Disk: /",
+              "smpins-web-NW: Free disk space on /boot (percentage)": "Disk: /boot",
+              "wso2: Free disk space on / (percentage)": "Disk: /",
+              "wso2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "xwiki: Free disk space on / (percentage)": "Disk: /",
+              "xwiki: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-server: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-server: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix2: Free disk space on / (percentage)": "Used disk space on /",
+              "zabbix2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "zabbix_cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix_cloud: Free disk space on /boot (percentage)": "Disk: /boot"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "noValue": "-",
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 16
+      },
+      "id": 34,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "titleSize": 16,
+          "valueSize": 40
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "9.4.10",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /mnt/it_dms (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:227",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "scale",
+                "params": [
+                  {
+                    "name": "factor",
+                    "options": [
+                      100,
+                      0.01,
+                      10,
+                      -1
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "-1"
+              ],
+              "text": "scale(-1)"
+            },
+            {
+              "$$hashKey": "object:228",
+              "def": {
+                "category": "Transform",
+                "defaultParams": [
+                  100
+                ],
+                "name": "offset",
+                "params": [
+                  {
+                    "name": "delta",
+                    "options": [
+                      -100,
+                      100
+                    ],
+                    "type": "float"
+                  }
+                ]
+              },
+              "params": [
+                "100"
+              ],
+              "text": "offset(100)"
+            }
+          ],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /var/spool/asterisk/monitor (percentage)"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "title": "Used disk space %",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Grafana: Free disk space on / (percentage)": "Used disk space on /",
+              "Grafana: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix server: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix server: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "Zabbix_cloud: Free disk space on / (percentage)": "Used disk space on /",
+              "Zabbix_cloud: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "b2b-mysql: Free disk space on / (percentage)": "Disk: /",
+              "b2b-mysql: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "b2b03: Free disk space on / (percentage)": "Disk: /",
+              "b2b03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "b2b04: Free disk space on / (percentage)": "Disk: /",
+              "b2b04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "bearpass: Free disk space on / (percentage)": "Disk: /",
+              "bearpass: Free disk space on /boot (percentage)": "Disk: /boot",
+              "dms-ws: Free disk space on / (percentage)": "Disk: /",
+              "dms-ws: Free disk space on /boot (percentage)": "Disk: /boot",
+              "drweb12: Free disk space on / (percentage)": "Disk: /",
+              "drweb12: Free disk space on /boot (percentage)": "Disk:  /boot",
+              "files-cloud: Free disk space on / (percentage)": "Disk:  /",
+              "files-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "files-cloud: Free disk space on /mnt/disk-m (percentage)": "Disk: /mnt/disk-m",
+              "files-cloud: Free disk space on /mnt/it_dms (percentage)": "Disk: /mnt/it_dms",
+              "grafana: Free disk space on / (percentage)": "Disk: /",
+              "grafana: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lk01: Free disk space on / (percentage)": "Disk: /",
+              "lk01: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s1: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s1: Free disk space on /boot (percentage)": "Disk: /boot",
+              "lmc-s2: Free disk space on / (percentage)": "Disk: /",
+              "lmc-s2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-cloud-copy: Free disk space on / (percentage)": "Disk: /",
+              "portal-cloud-copy: Free disk space on /boot (percentage)": "Disk: /boot",
+              "portal-new: Free disk space on / (percentage)": "Disk: /",
+              "portal-new: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy03: Free disk space on / (percentage)": "Disk: /",
+              "proxy03: Free disk space on /boot (percentage)": "Disk: /boot",
+              "proxy04: Free disk space on / (percentage)": "Disk: /",
+              "proxy04: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ-test: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ-test: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ2: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ2: Free disk space on /home (percentage)": "Disk: /home",
+              "rabbitMQ: Free disk space on / (percentage)": "Disk: /",
+              "rabbitMQ: Free disk space on /boot (percentage)": "Disk: /boot",
+              "rabbitMQ: Free disk space on /home (percentage)": "Disk: /home",
+              "sip.smpins.ru: Free disk space on / (percentage)": "Disk: /",
+              "sip.smpins.ru: Free disk space on /boot (percentage)": "Disk: /boot",
+              "sip.smpins.ru: Free disk space on /var/log (percentage)": "Disk: /var/log",
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor (percentage)": "Disk: /var/spool/asterisk/monitor",
+              "skud-debian: Free disk space on / (percentage)": "Disk: /",
+              "skud-debian: Free disk space on /boot (percentage)": "Disk: /boot",
+              "smpins-web-NW: Free disk space on / (percentage)": "Disk: /",
+              "smpins-web-NW: Free disk space on /boot (percentage)": "Disk: /boot",
+              "wso2: Free disk space on / (percentage)": "Disk: /",
+              "wso2: Free disk space on /boot (percentage)": "Disk: /boot",
+              "xwiki: Free disk space on / (percentage)": "Disk: /",
+              "xwiki: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-cloud: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix-server: Free disk space on / (percentage)": "Disk: /",
+              "zabbix-server: Free disk space on /boot (percentage)": "Disk: /boot",
+              "zabbix2: Free disk space on / (percentage)": "Used disk space on /",
+              "zabbix2: Free disk space on /boot (percentage)": "Used disk space on /boot",
+              "zabbix_cloud: Free disk space on / (percentage)": "Disk: /",
+              "zabbix_cloud: Free disk space on /boot (percentage)": "Disk: /boot"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 0,
+        "y": 19
+      },
+      "id": 11,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on /": "Free disk space on /",
+              "Grafana2: Total disk space on /": "Total disk space on /",
+              "Time": "",
+              "Zabbix server: Free disk space on /": "Free disk space on /",
+              "Zabbix server: Total disk space on /": "Total disk space on /",
+              "Zabbix_cloud: Free disk space on /": "Free disk space on /",
+              "Zabbix_cloud: Total disk space on /": "Total disk space on /",
+              "astra-print: Free disk space on /": "Free disk space on /",
+              "astra-print: Total disk space on /": "Total disk space on /",
+              "b2b-mysql: Free disk space on /": "Free disk space on /",
+              "b2b-mysql: Total disk space on /": "Total disk space on /",
+              "b2b04: Free disk space on /": "Free disk space on /",
+              "b2b04: Total disk space on /": "Total disk space on /",
+              "bearpass: Free disk space on /": "Free disk space on /",
+              "bearpass: Total disk space on /": "Total disk space on /",
+              "dms-ws: Free disk space on /": "Free disk space on /",
+              "dms-ws: Total disk space on /": "Total disk space on /",
+              "drweb12: Free disk space on /": "Free disk space on /",
+              "drweb12: Total disk space on /": "Total disk space on /",
+              "files-cloud: Free disk space on /": "Free disk space on /",
+              "files-cloud: Total disk space on /": "Total disk space on /",
+              "grafana2: Free disk space on /": "Free disk space on /",
+              "grafana2: Total disk space on /": "Total disk space on /",
+              "lk01: Free disk space on /": "Free disk space on /",
+              "lk01: Total disk space on /": "Total disk space on /",
+              "portal-cloud-copy: Free disk space on /": "Free disk space on /",
+              "portal-cloud-copy: Total disk space on /": "Total disk space on /",
+              "portal-new: Free disk space on /": "Free disk space on /",
+              "portal-new: Total disk space on /": "Total disk space on /",
+              "proxy03: Free disk space on /": "Free disk space on /",
+              "proxy03: Total disk space on /": "Total disk space on /",
+              "proxy04: Free disk space on /": "Free disk space on /",
+              "proxy04: Total disk space on /": "Total disk space on /",
+              "rabbitMQ-test: Free disk space on /": "Free disk space on /",
+              "rabbitMQ-test: Total disk space on /": "Total disk space on /",
+              "rabbitMQ2: Free disk space on /": "Free disk space on /",
+              "rabbitMQ2: Total disk space on /": "Total disk space on /",
+              "rabbitMQ: Free disk space on /": "Free disk space on /",
+              "rabbitMQ: Total disk space on /": "Total disk space on /",
+              "sip.smpins.ru: Free disk space on /": "Free disk space on /",
+              "sip.smpins.ru: Total disk space on /": "Total disk space on /",
+              "skud-debian: Free disk space on /": "Free disk space on /",
+              "skud-debian: Total disk space on /": "Total disk space on /",
+              "smpins-web-NW: Free disk space on /": "Free disk space on /",
+              "smpins-web-NW: Total disk space on /": "Total disk space on /",
+              "xwiki: Free disk space on /": "Free disk space on /",
+              "xwiki: Total disk space on /": "Total disk space on /",
+              "zabbix-cloud: Free disk space on /": "Free disk space on /",
+              "zabbix-cloud: Total disk space on /": "Total disk space on /",
+              "zabbix-server: Free disk space on /": "Free disk space on /",
+              "zabbix-server: Total disk space on /": "Total disk space on /",
+              "zabbix2: Free disk space on /": "Free disk space on /",
+              "zabbix2: Total disk space on /": "Total disk space on /",
+              "zabbix_cloud: Free disk space on /": "Free disk space on /",
+              "zabbix_cloud: Total disk space on /": "Total disk space on /"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /",
+            "binary": {
+              "left": "Total disk space on /",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana: Free disk space on /": "Free disk space on /",
+              "Grafana: Total disk space on /": "Total disk space on /",
+              "Time": "",
+              "b2b03: Free disk space on /": "Free disk space on /",
+              "b2b03: Total disk space on /": "Total disk space on /",
+              "grafana: Free disk space on /": "Free disk space on /",
+              "grafana: Total disk space on /": "Total disk space on /",
+              "lmc-s1: Free disk space on /": "Free disk space on /",
+              "lmc-s1: Total disk space on /": "Total disk space on /",
+              "lmc-s2: Free disk space on /": "Free disk space on /",
+              "lmc-s2: Total disk space on /": "Total disk space on /",
+              "wso2: Free disk space on /": "Free disk space on /",
+              "wso2: Total disk space on /": "Total disk space on /"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /",
+            "binary": {
+              "left": "Total disk space on /",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Free disk space on /": "",
+              "Time": "",
+              "Used disk space on /": "",
+              "wso2: Free disk space on /": "",
+              "wso2: Total disk space on /": ""
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 6,
+        "y": 19
+      },
+      "id": 27,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /boot"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /boot"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Grafana2: Free disk space on /boot": "Free disk space on /boot",
+              "Grafana2: Total disk space on /boot": "Total disk space on /boot",
+              "Zabbix server: Free disk space on /": "Free disk space on /",
+              "Zabbix server: Free disk space on /boot": "Free disk space on /boot",
+              "Zabbix server: Total disk space on /": "Total disk space on /",
+              "Zabbix server: Total disk space on /boot": "Total disk space on /boot",
+              "Zabbix_cloud: Free disk space on /boot": "Free disk space on /boot",
+              "Zabbix_cloud: Total disk space on /boot": "Total disk space on /boot",
+              "b2b-mysql: Free disk space on /": "Free disk space on /",
+              "b2b-mysql: Free disk space on /boot": "Free disk space on /boot",
+              "b2b-mysql: Total disk space on /": "Total disk space on /",
+              "b2b-mysql: Total disk space on /boot": "Total disk space on /boot",
+              "b2b04: Free disk space on /boot": "Free disk space on /boot",
+              "b2b04: Total disk space on /boot": "Total disk space on /boot",
+              "bearpass: Free disk space on /boot": "Free disk space on /boot",
+              "bearpass: Total disk space on /boot": "Total disk space on /boot",
+              "dms-ws: Free disk space on /": "Free disk space on /",
+              "dms-ws: Free disk space on /boot": "Free disk space on /boot",
+              "dms-ws: Total disk space on /": "Total disk space on /",
+              "dms-ws: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /": "Free disk space on /",
+              "drweb12: Total disk space on /": "Total disk space on /",
+              "files-cloud: Free disk space on /": "Free disk space on /",
+              "files-cloud: Free disk space on /boot": "Free disk space on /boot",
+              "files-cloud: Total disk space on /": "Total disk space on /",
+              "files-cloud: Total disk space on /boot": "Total disk space on /boot",
+              "grafana2: Free disk space on /boot": "Free disk space on /boot",
+              "grafana2: Total disk space on /boot": "Total disk space on /boot",
+              "lk01: Free disk space on /": "Free disk space on /",
+              "lk01: Free disk space on /boot": "Free disk space on /boot",
+              "lk01: Total disk space on /": "Total disk space on /",
+              "lk01: Total disk space on /boot": "Total disk space on /boot",
+              "portal-cloud-copy: Free disk space on /": "Free disk space on /",
+              "portal-cloud-copy: Free disk space on /boot": "Free disk space on /boot",
+              "portal-cloud-copy: Total disk space on /": "Total disk space on /",
+              "portal-cloud-copy: Total disk space on /boot": "Total disk space on /boot",
+              "portal-new: Free disk space on /": "Free disk space on /",
+              "portal-new: Free disk space on /boot": "Free disk space on /boot",
+              "portal-new: Total disk space on /": "Total disk space on /",
+              "portal-new: Total disk space on /boot": "Total disk space on /boot",
+              "proxy03: Free disk space on /": "Free disk space on /",
+              "proxy03: Free disk space on /boot": "Free disk space on /boot",
+              "proxy03: Total disk space on /": "Total disk space on /",
+              "proxy03: Total disk space on /boot": "Total disk space on /boot",
+              "proxy04: Free disk space on /boot": "Free disk space on /boot",
+              "proxy04: Total disk space on /boot": "Total disk space on /boot",
+              "rabbitMQ2: Free disk space on /boot": "Free disk space on /boot",
+              "rabbitMQ2: Total disk space on /boot": "Total disk space on /boot",
+              "rabbitMQ: Free disk space on /boot": "Free disk space on /boot",
+              "rabbitMQ: Total disk space on /boot": "Total disk space on /boot",
+              "sip.smpins.ru: Free disk space on /": "Free disk space on /",
+              "sip.smpins.ru: Free disk space on /boot": "Free disk space on /boot",
+              "sip.smpins.ru: Total disk space on /": "Total disk space on /",
+              "sip.smpins.ru: Total disk space on /boot": "Total disk space on /boot",
+              "skud-debian: Free disk space on /boot": "Free disk space on /boot",
+              "skud-debian: Total disk space on /boot": "Total disk space on /boot",
+              "smpins-web-NW: Free disk space on /": "Free disk space on /",
+              "smpins-web-NW: Free disk space on /boot": "Free disk space on /boot",
+              "smpins-web-NW: Total disk space on /": "Total disk space on /",
+              "smpins-web-NW: Total disk space on /boot": "Total disk space on /boot",
+              "xwiki: Free disk space on /boot": "Free disk space on /boot",
+              "xwiki: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix-cloud: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix-cloud: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix-server: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix-server: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix2: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix2: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix_cloud: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix_cloud: Total disk space on /boot": "Total disk space on /boot"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /boot",
+            "binary": {
+              "left": "Total disk space on /boot",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /boot"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /": true,
+              "Free disk space on /boot": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana: Free disk space on /": "Free disk space on /",
+              "Grafana: Free disk space on /boot": "Free disk space on /boot",
+              "Grafana: Total disk space on /": "Total disk space on /",
+              "Grafana: Total disk space on /boot": "Total disk space on /boot",
+              "b2b03: Free disk space on /boot": "Free disk space on /boot",
+              "b2b03: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /boot": "Free disk space on /boot",
+              "drweb12: Total disk space on /boot": "Total disk space on /boot",
+              "grafana: Free disk space on /boot": "Free disk space on /boot",
+              "grafana: Total disk space on /boot": "Total disk space on /boot",
+              "lmc-s1: Free disk space on /boot": "Free disk space on /boot",
+              "lmc-s1: Total disk space on /boot": "Total disk space on /boot",
+              "lmc-s2: Free disk space on /boot": "Free disk space on /boot",
+              "lmc-s2: Total disk space on /boot": "Total disk space on /boot",
+              "rabbitMQ-test: Free disk space on /boot": "Free disk space on /boot",
+              "rabbitMQ-test: Total disk space on /boot": "Total disk space on /boot",
+              "wso2: Free disk space on /boot": "Free disk space on /boot",
+              "wso2: Total disk space on /boot": "Total disk space on /boot"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /boot",
+            "binary": {
+              "left": "Total disk space on /boot",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /boot"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /boot": true,
+              "Used disk space on /boot": false
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /mnt/disk-m"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /mnt/disk-m"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /var/log"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /var/log"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /home"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /home"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 12,
+        "y": 19
+      },
+      "id": 28,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /mnt/disk-m"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /mnt/disk-m"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /var/log"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /var/log"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /home"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /home"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Time": "",
+              "Zabbix server: Free disk space on /": "Free disk space on /",
+              "Zabbix server: Free disk space on /boot": "Free disk space on /boot",
+              "Zabbix server: Total disk space on /": "Total disk space on /",
+              "Zabbix server: Total disk space on /boot": "Total disk space on /boot",
+              "astra-print: Free disk space on /home": "Free disk space on /home",
+              "astra-print: Total disk space on /home": "Total disk space on /home",
+              "b2b-mysql: Free disk space on /": "Free disk space on /",
+              "b2b-mysql: Free disk space on /boot": "Free disk space on /boot",
+              "b2b-mysql: Total disk space on /": "Total disk space on /",
+              "b2b-mysql: Total disk space on /boot": "Total disk space on /boot",
+              "bearpass: Free disk space on /boot": "Free disk space on /boot",
+              "bearpass: Total disk space on /boot": "Total disk space on /boot",
+              "dms-ws: Free disk space on /": "Free disk space on /",
+              "dms-ws: Free disk space on /boot": "Free disk space on /boot",
+              "dms-ws: Total disk space on /": "Total disk space on /",
+              "dms-ws: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /": "Free disk space on /",
+              "drweb12: Total disk space on /": "Total disk space on /",
+              "files-cloud: Free disk space on /": "Free disk space on /",
+              "files-cloud: Free disk space on /boot": "Free disk space on /boot",
+              "files-cloud: Free disk space on /mnt/disk-m": "Free disk space on /mnt/disk-m",
+              "files-cloud: Total disk space on /": "Total disk space on /",
+              "files-cloud: Total disk space on /boot": "Total disk space on /boot",
+              "files-cloud: Total disk space on /mnt/disk-m": "Total disk space on /mnt/disk-m",
+              "lk01: Free disk space on /": "Free disk space on /",
+              "lk01: Free disk space on /boot": "Free disk space on /boot",
+              "lk01: Total disk space on /": "Total disk space on /",
+              "lk01: Total disk space on /boot": "Total disk space on /boot",
+              "portal-cloud-copy: Free disk space on /": "Free disk space on /",
+              "portal-cloud-copy: Free disk space on /boot": "Free disk space on /boot",
+              "portal-cloud-copy: Total disk space on /": "Total disk space on /",
+              "portal-cloud-copy: Total disk space on /boot": "Total disk space on /boot",
+              "portal-new: Free disk space on /": "Free disk space on /",
+              "portal-new: Free disk space on /boot": "Free disk space on /boot",
+              "portal-new: Total disk space on /": "Total disk space on /",
+              "portal-new: Total disk space on /boot": "Total disk space on /boot",
+              "proxy03: Free disk space on /": "Free disk space on /",
+              "proxy03: Free disk space on /boot": "Free disk space on /boot",
+              "proxy03: Total disk space on /": "Total disk space on /",
+              "proxy03: Total disk space on /boot": "Total disk space on /boot",
+              "rabbitMQ-test: Free disk space on /home": "Free disk space on /home",
+              "rabbitMQ-test: Total disk space on /home": "Total disk space on /home",
+              "rabbitMQ: Free disk space on /home": "Free disk space on /home",
+              "rabbitMQ: Total disk space on /home": "Total disk space on /home",
+              "sip.smpins.ru: Free disk space on /": "Free disk space on /",
+              "sip.smpins.ru: Free disk space on /boot": "Free disk space on /boot",
+              "sip.smpins.ru: Free disk space on /var/log": "Free disk space on /var/log",
+              "sip.smpins.ru: Total disk space on /": "Total disk space on /",
+              "sip.smpins.ru: Total disk space on /boot": "Total disk space on /boot",
+              "sip.smpins.ru: Total disk space on /var/log": "Total disk space on /var/log",
+              "smpins-web-NW: Free disk space on /": "Free disk space on /",
+              "smpins-web-NW: Free disk space on /boot": "Free disk space on /boot",
+              "smpins-web-NW: Total disk space on /": "Total disk space on /",
+              "smpins-web-NW: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix2: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix2: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix_cloud: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix_cloud: Total disk space on /boot": "Total disk space on /boot"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /mnt/disk-m",
+            "binary": {
+              "left": "Total disk space on /mnt/disk-m",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /mnt/disk-m"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "rabbitMQ2: Free disk space on /home": "Free disk space on /home",
+              "rabbitMQ2: Total disk space on /home": "Total disk space on /home"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /var/log",
+            "binary": {
+              "left": "Total disk space on /var/log",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /var/log"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /home",
+            "binary": {
+              "left": "Total disk space on /home",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /home"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /": true,
+              "Free disk space on /boot": true,
+              "Free disk space on /home": true,
+              "Free disk space on /mnt/disk-m": true,
+              "Free disk space on /var/log": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana: Free disk space on /": "Free disk space on /",
+              "Grafana: Free disk space on /boot": "Free disk space on /boot",
+              "Grafana: Total disk space on /": "Total disk space on /",
+              "Grafana: Total disk space on /boot": "Total disk space on /boot",
+              "Total disk space on /var/log": "",
+              "b2b03: Free disk space on /boot": "Free disk space on /boot",
+              "b2b03: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /boot": "Free disk space on /boot",
+              "drweb12: Total disk space on /boot": "Total disk space on /boot",
+              "rabbitMQ2: Free disk space on /home": "",
+              "rabbitMQ2: Total disk space on /home": ""
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "green",
+            "mode": "continuous-RdYlGr"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 3600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /boot"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /mnt/disk-m"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /mnt/disk-m"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /var/spool/asterisk/monitor"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /var/spool/asterisk/monitor"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Used disk space on /mnt/it_dms"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total disk space on /mnt/it_dms"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 19
+      },
+      "id": 29,
+      "links": [],
+      "maxDataPoints": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /mnt/it_dms"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /mnt/it_dms"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Free disk space on /var/spool/asterisk/monitor"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        },
+        {
+          "application": {
+            "filter": "Filesystems"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Total disk space on /var/spool/asterisk/monitor"
+          },
+          "itemTag": {
+            "filter": "Application: Filesystems"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Zabbix server: Free disk space on /": "Free disk space on /",
+              "Zabbix server: Free disk space on /boot": "Free disk space on /boot",
+              "Zabbix server: Total disk space on /": "Total disk space on /",
+              "Zabbix server: Total disk space on /boot": "Total disk space on /boot",
+              "b2b-mysql: Free disk space on /": "Free disk space on /",
+              "b2b-mysql: Free disk space on /boot": "Free disk space on /boot",
+              "b2b-mysql: Total disk space on /": "Total disk space on /",
+              "b2b-mysql: Total disk space on /boot": "Total disk space on /boot",
+              "bearpass: Free disk space on /boot": "Free disk space on /boot",
+              "bearpass: Total disk space on /boot": "Total disk space on /boot",
+              "dms-ws: Free disk space on /": "Free disk space on /",
+              "dms-ws: Free disk space on /boot": "Free disk space on /boot",
+              "dms-ws: Total disk space on /": "Total disk space on /",
+              "dms-ws: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /": "Free disk space on /",
+              "drweb12: Total disk space on /": "Total disk space on /",
+              "files-cloud: Free disk space on /": "Free disk space on /",
+              "files-cloud: Free disk space on /boot": "Free disk space on /boot",
+              "files-cloud: Free disk space on /mnt/disk-m": "Free disk space on /mnt/disk-m",
+              "files-cloud: Free disk space on /mnt/it_dms": "Free disk space on /mnt/it_dms",
+              "files-cloud: Total disk space on /": "Total disk space on /",
+              "files-cloud: Total disk space on /boot": "Total disk space on /boot",
+              "files-cloud: Total disk space on /mnt/disk-m": "Total disk space on /mnt/disk-m",
+              "files-cloud: Total disk space on /mnt/it_dms": "Total disk space on /mnt/it_dms",
+              "lk01: Free disk space on /": "Free disk space on /",
+              "lk01: Free disk space on /boot": "Free disk space on /boot",
+              "lk01: Total disk space on /": "Total disk space on /",
+              "lk01: Total disk space on /boot": "Total disk space on /boot",
+              "portal-cloud-copy: Free disk space on /": "Free disk space on /",
+              "portal-cloud-copy: Free disk space on /boot": "Free disk space on /boot",
+              "portal-cloud-copy: Total disk space on /": "Total disk space on /",
+              "portal-cloud-copy: Total disk space on /boot": "Total disk space on /boot",
+              "portal-new: Free disk space on /": "Free disk space on /",
+              "portal-new: Free disk space on /boot": "Free disk space on /boot",
+              "portal-new: Total disk space on /": "Total disk space on /",
+              "portal-new: Total disk space on /boot": "Total disk space on /boot",
+              "proxy03: Free disk space on /": "Free disk space on /",
+              "proxy03: Free disk space on /boot": "Free disk space on /boot",
+              "proxy03: Total disk space on /": "Total disk space on /",
+              "proxy03: Total disk space on /boot": "Total disk space on /boot",
+              "sip.smpins.ru: Free disk space on /": "Free disk space on /",
+              "sip.smpins.ru: Free disk space on /boot": "Free disk space on /boot",
+              "sip.smpins.ru: Total disk space on /": "Total disk space on /",
+              "sip.smpins.ru: Total disk space on /boot": "Total disk space on /boot",
+              "smpins-web-NW: Free disk space on /": "Free disk space on /",
+              "smpins-web-NW: Free disk space on /boot": "Free disk space on /boot",
+              "smpins-web-NW: Total disk space on /": "Total disk space on /",
+              "smpins-web-NW: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix2: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix2: Total disk space on /boot": "Total disk space on /boot",
+              "zabbix_cloud: Free disk space on /boot": "Free disk space on /boot",
+              "zabbix_cloud: Total disk space on /boot": "Total disk space on /boot"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /mnt/it_dms",
+            "binary": {
+              "left": "Total disk space on /mnt/it_dms",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /mnt/it_dms"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /": true,
+              "Free disk space on /boot": true,
+              "Free disk space on /mnt/disk-m": true,
+              "Free disk space on /mnt/it_dms": true,
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Grafana: Free disk space on /": "Free disk space on /",
+              "Grafana: Free disk space on /boot": "Free disk space on /boot",
+              "Grafana: Total disk space on /": "Total disk space on /",
+              "Grafana: Total disk space on /boot": "Total disk space on /boot",
+              "b2b03: Free disk space on /boot": "Free disk space on /boot",
+              "b2b03: Total disk space on /boot": "Total disk space on /boot",
+              "drweb12: Free disk space on /boot": "Free disk space on /boot",
+              "drweb12: Total disk space on /boot": "Total disk space on /boot",
+              "sip.smpins.ru: Free disk space on /var/spool/asterisk/monitor": "Free disk space on /var/spool/asterisk/monitor",
+              "sip.smpins.ru: Total disk space on /var/spool/asterisk/monitor": "Total disk space on /var/spool/asterisk/monitor"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Used disk space on /var/spool/asterisk/monitor",
+            "binary": {
+              "left": "Total disk space on /var/spool/asterisk/monitor",
+              "operator": "-",
+              "reducer": "sum",
+              "right": "Free disk space on /var/spool/asterisk/monitor"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Free disk space on /var/spool/asterisk/monitor": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Free disk space on /var/spool/asterisk/monitor": ""
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 31,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "Number of logged in users"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "showProblems": "recent",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "Terminal logged in users",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/Incoming network traffic on */"
+          },
+          "itemTag": {
+            "filter": "Application: Network interfaces"
+          },
+          "options": {
+            "acknowledged": 2,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "showProblems": "recent",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Linux servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$host"
+          },
+          "item": {
+            "filter": "/Outgoing network traffic on */"
+          },
+          "itemTag": {
+            "filter": "Application: Network interfaces"
+          },
+          "options": {
+            "acknowledged": 2,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "showProblems": "recent",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "Network traffic",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "linux"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "${DS_ZABBIX}"
+        },
+        "definition": "Zabbix - group",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Group",
+        "multi": false,
+        "name": "group",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/Linux servers/",
+          "host": "",
+          "item": "",
+          "itemTag": "",
+          "queryType": "group"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "${DS_ZABBIX}"
+        },
+        "definition": "Zabbix - host",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "name": "host",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/$group/",
+          "host": "/.*/",
+          "item": "",
+          "itemTag": "",
+          "queryType": "host"
+        },
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Linux servers agent",
+  "uid": "vDNQFuV4z",
+  "version": 16,
+  "weekStart": ""
+}
