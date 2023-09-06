@@ -1,4 +1,4 @@
-# Grafana
+# Grafana dashboards
 ### Description  
 This repository contains set of Grafana dashboards.   
 #### 1. AD Monitoring
