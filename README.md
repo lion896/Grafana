@@ -3,9 +3,11 @@
 This repository contains set of Grafana dashboards.   
 ### [AD Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/AD%20Monitoring-1693995940464.json)
 ### [Apache Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Apache%20Overview-1693995954365.json)  
+![](https://github.com/lion896/Grafana/blob/main/images/apache.png) 
 ### [D-Link Network Devices](https://github.com/lion896/Grafana/blob/main/dashboards/D-Link%20Network%20Devices-1693995960983.json)
 ### [GrayLog-Nodes](https://github.com/lion896/Grafana/blob/main/dashboards/GrayLog-Nodes-1693995967387.json)  
 ### [HTTP Response](https://github.com/lion896/Grafana/blob/main/dashboards/HTTP%20Response-1693995982339.json)  
+![](https://github.com/lion896/Grafana/blob/main/images/http.png) 
 ### [Linux servers agent](https://github.com/lion896/Grafana/blob/main/dashboards/Linux%20servers%20agent-1693995989518.json)  
 ### [Microsoft SQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Microsoft%20SQL%20Overview-1693995997518.json)  
 ### [Mikrotik Network Devices](https://github.com/lion896/Grafana/blob/main/dashboards/Mikrotik%20Network%20Devices-1693996005680.json)  
