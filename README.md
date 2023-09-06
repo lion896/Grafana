@@ -33,9 +33,13 @@ Dashboard for monitoring the main indicators of the Oracle DBMS. Such as uptime,
 ## [PostgreSQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/PostgreSQL%20Overview-1693996062871.json)  
 Dashboard for monitoring the main indicators of the PostgreSQL. Such as uptime, number of connected users, number of requests, size of databases
 ## [Printers Detail](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Detail-1693996070383.json)  
+Dashboard for monitoring printers.  
 ## [Printers Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Overview-1693996078364.json)  
+Dashboard for monitoring printers.  
 ## [RabbitMQ Overview](https://github.com/lion896/Grafana/blob/main/dashboards/RabbitMQ%20Overview-1693996085926.json)  
-## [Radius-Server Log Monitoring Full](https://github.com/lion896/Grafana/blob/main/dashboards/Radius-Server%20Log%20Monitoring%20Full-1693996096997.json)    
+Dashboard for monitoring RabbitMQ.
+## [Radius-Server Log Monitoring Full](https://github.com/lion896/Grafana/blob/main/dashboards/Radius-Server%20Log%20Monitoring%20Full-1693996096997.json)  
+Dashboard for monitoring Radius server logs (vpn connection authorization logs)  
 ## [SIP Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/SIP%20Monitoring-1693996111622.json)  
 Dashboard for monitoring the operation of the Asterisk PBX. Allows you to track such parameters of the PBX operation as the number of active calls, the number of connected users (Active endpoints), etc.  
 ![](https://github.com/lion896/Grafana/blob/main/images/sip.png)  
