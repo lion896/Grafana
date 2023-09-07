@@ -1,0 +1,169 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-09-07T07:44:28Z'
+  groups:
+    -
+      uuid: b9390195ecad4986968746a2a9b56354
+      name: 'My Templates'
+  templates:
+    -
+      uuid: 7ebeee718f964e599ad4eed6ea400a63
+      template: 'Samsung by SNMP'
+      name: 'Samsung by SNMP'
+      groups:
+        -
+          name: 'My Templates'
+      items:
+        -
+          uuid: fe84a4ed780d469fa9be770420eaf2fe
+          name: 'black toner text'
+          type: DEPENDENT
+          key: black-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          master_item:
+            key: level-toner
+        -
+          uuid: 56888c8f6e3f4095824632dd43f3ba01
+          name: 'Printer model'
+          type: SNMP_AGENT
+          snmp_oid: hrDeviceDescr.1
+          key: hrDeviceDescr.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Модель принтера'
+        -
+          uuid: 4766f7480441472e8c45c035cd73b454
+          name: 'ICMP ping'
+          type: SIMPLE
+          key: icmpping
+          history: 1w
+          tags:
+            -
+              tag: Application
+              value: Status
+        -
+          uuid: eac3ecaa968d44c0b7aff93eafb75d6b
+          name: 'black toner %'
+          type: CALCULATED
+          key: level-toner
+          history: 7d
+          units: '%'
+          params: '100*(last(/{HOST.HOST}/mib-2.43.11.1.1.9.1.1)/last(/{HOST.HOST}/mib-2.43.11.1.1.8.1.1))'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: 562041aa9e244a4f81f701816ffbb5a7
+              expression: 'last(/Samsung by SNMP/level-toner)=0'
+              name: '{HOST.NAME}: Уровень черного тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: unknown
+            -
+              uuid: e06eb6fad7fd43a0b287b509a7a4d994
+              expression: 'last(/Samsung by SNMP/level-toner)<=1'
+              name: '{HOST.NAME}: Уровень черного тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: d47a3c36b54b4e94b35ad19c9425173e
+              expression: 'last(/Samsung by SNMP/level-toner)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень черного тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: 6fc2d62a3948452e8207c41070e62ebc
+          name: 'Printer name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.16.1
+          key: mib-2.43.5.1.1.16.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название принтера'
+        -
+          uuid: bffe6beb43fa45ecbe03735bc4828e9c
+          name: 'Serial number'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.17.1
+          key: mib-2.43.5.1.1.17.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Серийный номер'
+        -
+          uuid: 03b4b982062e457ea39c05e4bd7c6080
+          name: 'Print Counter'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.10.2.1.4.1.1
+          key: mib-2.43.10.2.1.4.1.1
+          history: 7d
+          description: 'Всего напечатано страниц'
+        -
+          uuid: 444b07356b9e44bb8a08eab4e400b465
+          name: 'Cartridge name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.1
+          key: mib-2.43.11.1.1.6.1.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: e073b2492d9e4ff38ff566007a210222
+          name: mib-2.43.11.1.1.8.1.1
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.8.1.1
+          key: mib-2.43.11.1.1.8.1.1
+          history: 7d
+        -
+          uuid: 72f8cbc280a94fd6aee59a4126427bbd
+          name: mib-2.43.11.1.1.9.1.1
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.1
+          key: mib-2.43.11.1.1.9.1.1
+          history: 7d
+        -
+          uuid: 27cb3607fa544d8d877816b694431ba7
+          name: status
+          type: DEPENDENT
+          key: status
+          delay: '0'
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          description: статус
+          master_item:
+            key: icmpping
+        -
+          uuid: 9a260065ba244d40a4e1f1a24f104589
+          name: Location
+          type: SNMP_AGENT
+          snmp_oid: sysLocation.0
+          key: sysLocation.0
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: Размещение
+        -
+          uuid: 6e022aa58bde484a89aa4e4957c127d2
+          name: sysUpTime
+          type: SNMP_AGENT
+          snmp_oid: sysUpTimeInstance
+          key: sysUpTimeInstance
+          history: 7d
+          description: 'Время работы принтера'

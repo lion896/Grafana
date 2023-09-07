@@ -1,0 +1,320 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-09-07T07:43:54Z'
+  groups:
+    -
+      uuid: b9390195ecad4986968746a2a9b56354
+      name: 'My Templates'
+  templates:
+    -
+      uuid: f026fe90ec414aa6811058cdd1d25554
+      template: 'HP by SNMP'
+      name: 'HP by SNMP'
+      groups:
+        -
+          name: 'My Templates'
+      items:
+        -
+          uuid: 084ffbd9254b4a929f72b7fc22a0a77f
+          name: 'black toner text'
+          type: DEPENDENT
+          key: black-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          master_item:
+            key: mib-2.43.11.1.1.9.1.1
+        -
+          uuid: 1af7c87c28994588917f2a41f35557a2
+          name: 'cyan toner text'
+          type: DEPENDENT
+          key: cyan-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Уровень тонера %'
+          master_item:
+            key: mib-2.43.11.1.1.9.1.2
+        -
+          uuid: a1858e40325040dc91213eb54648df93
+          name: 'Printer model'
+          type: SNMP_AGENT
+          snmp_oid: hrDeviceDescr.1
+          key: hrDeviceDescr.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Модель принтера'
+        -
+          uuid: 250218e0eadb41a1a997bbffcffbfb5b
+          name: 'ICMP ping'
+          type: SIMPLE
+          key: icmpping
+          history: 1w
+          tags:
+            -
+              tag: Application
+              value: Status
+        -
+          uuid: a715ffe4ef854ff486307bc38c022598
+          name: 'magenta toner text'
+          type: DEPENDENT
+          key: magenta-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Уровень тонера %'
+          master_item:
+            key: mib-2.43.11.1.1.9.1.3
+        -
+          uuid: 08ae8dae2b07441a9a52bbe73089f64f
+          name: 'Printer name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.16.1
+          key: mib-2.43.5.1.1.16.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название принтера'
+        -
+          uuid: 91f4e279c4ee4db6b70ccb68148f3ba4
+          name: 'Serial number'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.17.1
+          key: mib-2.43.5.1.1.17.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Серийный номер'
+        -
+          uuid: b020e718123e47af84aeebf4234b1aae
+          name: 'Print Counter'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.10.2.1.4.1.1
+          key: mib-2.43.10.2.1.4.1.1
+          history: 7d
+          description: 'Всего напечатано страниц'
+        -
+          uuid: b9b73c7f9090476787d3ecf8ad0e5e51
+          name: 'Cartridge name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.1
+          key: mib-2.43.11.1.1.6.1.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: 28e5d859183f4a1fb31d90ac2e15bc99
+          name: 'Cartridge name 2'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.2
+          key: mib-2.43.11.1.1.6.1.2
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: c49506a801d94decbc8cbebaea34905c
+          name: 'Cartridge name 3'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.3
+          key: mib-2.43.11.1.1.6.1.3
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: 1ec153a3370f47b9a841fae42dfca44c
+          name: 'Cartridge name 4'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.4
+          key: mib-2.43.11.1.1.6.1.4
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: 21ec58c54a3e41c0a8b26356ccfc0551
+          name: 'black toner %'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.1
+          key: mib-2.43.11.1.1.9.1.1
+          history: 7d
+          units: '%'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: 3f7c5be6aec448f38a5a5d3e84f3cd65
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.1)=0'
+              name: '{HOST.NAME}: Уровень черного тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: unknown
+            -
+              uuid: 501f55c5357a444d9fcb07d72b826adf
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.1)<=1'
+              name: '{HOST.NAME}: Уровень черного тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: 82b2244ffae740d4806e8feee236a173
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.1)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень черного тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: 6b85fd25e4fd40608d7144c6ded18491
+          name: 'cyan toner %'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.2
+          key: mib-2.43.11.1.1.9.1.2
+          history: 7d
+          units: '%'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: 2d6c74bb4b664035bacc515c37d516bc
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.2)=0'
+              name: '{HOST.NAME}: Уровень голубого тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: db926943cb0949da8c673aa3a8ca1ccb
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.2)<=1'
+              name: '{HOST.NAME}: Уровень голубого тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: 2fbfda9772864e28bcacb0e14686b9cd
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.2)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень голубого тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: bc92e4ac165048649ddb6a299d01ef88
+          name: 'magenta toner %'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.3
+          key: mib-2.43.11.1.1.9.1.3
+          history: 7d
+          units: '%'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: d077f3678fe74c8095358748b4244e5e
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.3)=0'
+              name: '{HOST.NAME}: Уровень розового тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: 2ab13bcef1574827bafe3e6863deb14b
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.3)<=1'
+              name: '{HOST.NAME}: Уровень розового тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: 6c466fe7ebe6433cad8d71ed2e8048ad
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.3)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень розового тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: c74c3365b43e43558f7baccac72ab079
+          name: 'yellow toner %'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.4
+          key: mib-2.43.11.1.1.9.1.4
+          history: 7d
+          units: '%'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: 6d33d491286b42338cd4fed1fb028c6b
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.4)=0'
+              name: '{HOST.NAME}: Уровень желтого тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+            -
+              uuid: f812dd2d938c4a8c9820a0a7c4b37511
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.4)<=1'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень желтого тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: e0a7a56c18da44ffa657bc8b3fc481a3
+              expression: 'last(/HP by SNMP/mib-2.43.11.1.1.9.1.4)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень желтого тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: 9ea818b61a8b4d0ea4fe2e13ce1f6128
+          name: status
+          type: DEPENDENT
+          key: status
+          delay: '0'
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          description: статус
+          master_item:
+            key: icmpping
+        -
+          uuid: 989b18d167b94ffbb8c7b990d5609c69
+          name: Location
+          type: SNMP_AGENT
+          snmp_oid: sysLocation.0
+          key: sysLocation.0
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: Размещение
+        -
+          uuid: 46e39c80dd6742d0a68c5b7f88c89fb0
+          name: sysUpTime
+          type: SNMP_AGENT
+          snmp_oid: sysUpTimeInstance
+          key: sysUpTimeInstance
+          history: 7d
+          description: 'Время работы принтера'
+        -
+          uuid: bc37058c66ce4d4291f36aab74382ed6
+          name: 'yellow toner text'
+          type: DEPENDENT
+          key: yellow-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          master_item:
+            key: mib-2.43.11.1.1.9.1.4

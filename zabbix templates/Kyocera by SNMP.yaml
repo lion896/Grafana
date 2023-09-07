@@ -1,0 +1,202 @@
+zabbix_export:
+  version: '6.0'
+  date: '2023-09-07T07:44:04Z'
+  groups:
+    -
+      uuid: b9390195ecad4986968746a2a9b56354
+      name: 'My Templates'
+  templates:
+    -
+      uuid: d5422bf022f74ab093b5c239052305c3
+      template: 'Kyocera by SNMP'
+      name: 'Kyocera by SNMP'
+      groups:
+        -
+          name: 'My Templates'
+      items:
+        -
+          uuid: ddd75b38d68248058477678b129ff3b4
+          name: 'black toner text'
+          type: DEPENDENT
+          key: black-text
+          delay: '0'
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          master_item:
+            key: level-toner
+        -
+          uuid: 264fbd338aea49a7bec2e93928868554
+          name: 'Printer model'
+          type: SNMP_AGENT
+          snmp_oid: hrDeviceDescr.1
+          key: hrDeviceDescr.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Модель принтера'
+        -
+          uuid: 05c3de6bf8d9460d9a40508284a71930
+          name: 'ICMP ping'
+          type: SIMPLE
+          key: icmpping
+          history: 1w
+          tags:
+            -
+              tag: Application
+              value: Status
+        -
+          uuid: 18301d6a82c046d2b0762003f3ea9007
+          name: 'black toner %'
+          type: CALCULATED
+          key: level-toner
+          history: 7d
+          units: '%'
+          params: '100*(last(/{HOST.HOST}/mib-2.43.11.1.1.9.1.1)/last(/{HOST.HOST}/mib-2.43.11.1.1.8.1.1))'
+          description: 'Уровень тонера %'
+          triggers:
+            -
+              uuid: 363b0373d1e744e3b63c33b61a1a1473
+              expression: 'last(/Kyocera by SNMP/level-toner)=0'
+              name: '{HOST.NAME}: Уровень черного тонера 0%'
+              priority: HIGH
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: unknown
+            -
+              uuid: 55b86f06363d42a2895e579039b0a44b
+              expression: 'last(/Kyocera by SNMP/level-toner)<=1'
+              name: '{HOST.NAME}: Уровень черного тонера 1%'
+              priority: AVERAGE
+              manual_close: 'YES'
+              tags:
+                -
+                  tag: monitoring
+            -
+              uuid: 5b7580a308a54ae0a9b6a1ec683beece
+              expression: 'last(/Kyocera by SNMP/level-toner)<5'
+              recovery_mode: NONE
+              name: '{HOST.NAME}: Уровень черного тонера меньше 5%'
+              priority: WARNING
+              manual_close: 'YES'
+        -
+          uuid: b24bd5a504484baaab965a1958a818f7
+          name: 'Printer name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.16.1
+          key: mib-2.43.5.1.1.16.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название принтера'
+        -
+          uuid: b422b56d9fff45f98448c61dd5a0ca1a
+          name: 'Serial number'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.5.1.1.17.1
+          key: mib-2.43.5.1.1.17.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Серийный номер'
+        -
+          uuid: a367b72571394548a50dc1e868b17b9a
+          name: 'Print Counter'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.10.2.1.4.1.1
+          key: mib-2.43.10.2.1.4.1.1
+          history: 7d
+          description: 'Всего напечатано страниц'
+        -
+          uuid: f5dba3c44be94a7eba241511cdf0b554
+          name: 'Cartridge name'
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.6.1.1
+          key: mib-2.43.11.1.1.6.1.1
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: 'Название картриджа'
+        -
+          uuid: 2b385d9367094fbea607483d36b4820c
+          name: mib-2.43.11.1.1.8.1.1
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.8.1.1
+          key: mib-2.43.11.1.1.8.1.1
+          history: 7d
+        -
+          uuid: e1a1131e69f3430ba47f2f2c8c14dfd6
+          name: mib-2.43.11.1.1.8.1.2
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.8.1.2
+          key: mib-2.43.11.1.1.8.1.2
+          history: 7d
+          preprocessing:
+            -
+              type: STR_REPLACE
+              parameters:
+                - '-'
+                - ' '
+        -
+          uuid: aff2f6f940e84bf3b815f35a18881cb9
+          name: mib-2.43.11.1.1.9.1.1
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.1
+          key: mib-2.43.11.1.1.9.1.1
+          history: 7d
+        -
+          uuid: fd291153c3cc43f48fa2b69613191c9c
+          name: mib-2.43.11.1.1.9.1.2
+          type: SNMP_AGENT
+          snmp_oid: mib-2.43.11.1.1.9.1.2
+          key: mib-2.43.11.1.1.9.1.2
+          history: 7d
+          preprocessing:
+            -
+              type: STR_REPLACE
+              parameters:
+                - '-'
+                - ''
+        -
+          uuid: 746a0957c59d482dbb50d08dff02dff9
+          name: status
+          type: DEPENDENT
+          key: status
+          delay: '0'
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          description: статус
+          master_item:
+            key: icmpping
+        -
+          uuid: 7ebb6e87f61e422488ab8ff41ddc4c2e
+          name: Location
+          type: SNMP_AGENT
+          snmp_oid: sysLocation.0
+          key: sysLocation.0
+          delay: 1h
+          history: 7d
+          trends: '0'
+          value_type: TEXT
+          description: Размещение
+        -
+          uuid: 77aebd5ca1924b0daf76dd45dc5e9f0d
+          name: sysUpTime
+          type: SNMP_AGENT
+          snmp_oid: sysUpTimeInstance
+          key: sysUpTimeInstance
+          history: 7d
+          description: 'Время работы принтера'
+        -
+          uuid: 316bef8d50d94ab8a97b572481b5cc47
+          name: 'Waste Toner Box'
+          type: CALCULATED
+          key: Waste-Box
+          units: '%'
+          params: '100*(last(/{HOST.HOST}/mib-2.43.11.1.1.9.1.2)/last(/{HOST.HOST}/mib-2.43.11.1.1.8.1.2))-50'
