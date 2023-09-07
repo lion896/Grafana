@@ -2,7 +2,7 @@
 ## Description  
 This repository contains set of Grafana dashboards.  
 ## Features  
-Most of these dashboards use the [Zabbix plugin for Grafana](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/)  
+Most of these dashboards use the [Zabbix plugin for Grafana](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/).  
 ## Install
 In most installation cases, you will need to clone this repository:  
 `git clone https://github.com/lion896/grafana.git`  
