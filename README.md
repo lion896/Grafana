@@ -3,6 +3,12 @@
 This repository contains set of Grafana dashboards.  
 ### Features  
 Most of these dashboards use the [Zabbix plugin for Grafana](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/)  
+### Install
+In most installation cases, you will need to clone this repository:  
+`git clone https://github.com/lion896/grafana.git`  
+or download .json files manually.  
+Then on the WebUI of your Grafana instance, put your mouse over the + sign on the left menu, then click on Import.
+Once you are on the Import page, you can upload the JSON files one by one from your local copy using the Upload JSON file button.  
 ## [AD Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/AD%20Monitoring-1693995940464.json)  
 A dashboard for monitoring Active Directory events based on the security logs of domain controllers.
 Allows you to track the creation, deletion, blocking/unblocking of domain US, enabling/disabling US, password reset and search through the log of log events.  
