@@ -44,8 +44,8 @@ Dashboard for monitoring the main indicators of the PostgreSQL. Such as uptime, 
 ### [Printers Detail](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Detail-1693996070383.json)  
 Dashboard for monitoring printers.  
 ### [Printers Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Overview-1693996078364.json)  
-Dashboard for monitoring printers. 
-![](https://github.com/lion896/Grafana/blob/main/images/printers.png)  
+Dashboard for monitoring printers.  
+![](https://github.com/lion896/Grafana/blob/main/images/printers.png)   
 ### [RabbitMQ Overview](https://github.com/lion896/Grafana/blob/main/dashboards/RabbitMQ%20Overview-1693996085926.json)  
 Dashboard for monitoring RabbitMQ.
 ### [Radius-Server Log Monitoring Full](https://github.com/lion896/Grafana/blob/main/dashboards/Radius-Server%20Log%20Monitoring%20Full-1693996096997.json)  
