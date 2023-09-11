@@ -22,7 +22,7 @@ Dashboard for monitoring d-link switches. Data on CPU load, memory, temperature,
 Dashboard for monitoring the work of Graylog and Elasticsearch.  
 ### [HTTP Response](https://github.com/lion896/Grafana/blob/main/dashboards/HTTP%20Response-1693995982339.json)  
 Dashboard for monitoring availability, download speed and other parameters for external sites.  
-![](https://github.com/lion896/Grafana/blob/main/images/http.png) 
+![](https://github.com/lion896/Grafana/blob/main/images/http.png)  
 ### [Linux servers agent](https://github.com/lion896/Grafana/blob/main/dashboards/Linux%20servers%20agent-1693995989518.json)  
 Dashboard for monitoring Linux servers. It is allowed to monitor parameters such as CPU load, OP load, disk space usage, time, number of connected users, etc.  
 ### [Microsoft SQL Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Microsoft%20SQL%20Overview-1693995997518.json)  
@@ -44,7 +44,8 @@ Dashboard for monitoring the main indicators of the PostgreSQL. Such as uptime, 
 ### [Printers Detail](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Detail-1693996070383.json)  
 Dashboard for monitoring printers.  
 ### [Printers Overview](https://github.com/lion896/Grafana/blob/main/dashboards/Printers%20Overview-1693996078364.json)  
-Dashboard for monitoring printers.  
+Dashboard for monitoring printers. 
+![](https://github.com/lion896/Grafana/blob/main/images/printers.png)  
 ### [RabbitMQ Overview](https://github.com/lion896/Grafana/blob/main/dashboards/RabbitMQ%20Overview-1693996085926.json)  
 Dashboard for monitoring RabbitMQ.
 ### [Radius-Server Log Monitoring Full](https://github.com/lion896/Grafana/blob/main/dashboards/Radius-Server%20Log%20Monitoring%20Full-1693996096997.json)  
