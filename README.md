@@ -2,7 +2,7 @@
 ## Description  
 This repository contains set of Grafana dashboards.  
 ## Features  
-Most of these dashboards use the [Zabbix plugin for Grafana](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/)  
+Most of these dashboards use the [Zabbix plugin for Grafana](https://grafana.com/grafana/plugins/alexanderzobnin-zabbix-app/).  
 ## Install
 In most installation cases, you will need to clone this repository:  
 `git clone https://github.com/lion896/grafana.git`  
@@ -68,7 +68,7 @@ Dashboard for monitoring VPN connections of users to the corporate network.
 Dashboard for monitoring VPN connections of users to the corporate network.  
 ### [Windows servers agent](https://github.com/lion896/Grafana/blob/main/dashboards/Windows%20servers%20agent-1693996167742.json)  
 Dashboard for monitoring Windows servers. It is allowed to monitor parameters such as CPU load, OP load, disk space usage, time, number of connected users, etc.
-### [Zabbix DB Replication](https://github.com/lion896/Grafana/blob/main/dashboards/Zabbix%20DB%20Replication-1693996176398.json)  
+### [MySQL Replication](https://github.com/lion896/Grafana/blob/main/dashboards/Zabbix%20DB%20Replication-1693996176398.json)  
 ![](https://github.com/lion896/Grafana/blob/main/images/zabbix.png)
 ## Contributing  
 Feel free to contribute to this project.
