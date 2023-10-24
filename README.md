@@ -53,10 +53,13 @@ Dashboard for monitoring Radius server logs (vpn connection authorization logs)
 ### [SIP Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/SIP%20Monitoring-1693996111622.json)  
 Dashboard for monitoring the operation of the Asterisk PBX. Allows you to track such parameters of the PBX operation as the number of active calls, the number of connected users (Active endpoints), etc.  
 ![](https://github.com/lion896/Grafana/blob/main/images/sip.png)  
-### [Squid Log Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Squid%20Log%20Monitoring-1693472337304.json)  
+### [Proxy Log Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Squid%20Log%20Monitoring-1693472337304.json)  
 Dashboard for traffic monitoring based on logs from a proxy server, allows you to get information about the volume of Internet traffic, analyze traffic and Internet resources visited by employees - if necessary, generate reports.
 There are additional filters for employees and visited sites.  
 ![](https://github.com/lion896/Grafana/blob/main/images/squid.png)
+### [Squid Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Squid%20monitoring.json)  
+Dashboard for monitoring Squid. 
+![](https://github.com/lion896/Grafana/blob/main/images/squide2.png)
 ### [Synology Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/Synology%20Monitoring-1693996122345.json)  
 Dashboard for monitoring data storage systems (DSS). It is allowed to monitor parameters such as CPU load, disk space usage, as well as the temperature of disk drives, the state of RAID arrays, and so on.  
 ### [UPS Monitoring](https://github.com/lion896/Grafana/blob/main/dashboards/UPS%20Monitoring-1693996131691.json)  
